@@ -123,65 +123,65 @@ function last_id_variants() {
 
 }
 
-function create_product_variant($id, $product) {
+// function create_product_variant($id, $product) {
 
-    if(empty($id) || !is_array($product)) return;
-    if(empty($product["s"])){
-        $name = "Small";
-        $rate = $product["s"];
-    }
+//     if(empty($id) || !is_array($product)) return;
+//     if(empty($product["s"])){
+//         $name = "Small";
+//         $rate = $product["s"];
+//     }
 
-    // if(empty($product["m"]))
-    $insert_sql = "INSERT INTO product_variants (product_id, name, rate, created_by, updated_by, created_on, updated_on) VALUES (?, ?, ?, ?, ?, ?, ?)";
+//     // if(empty($product["m"]))
+//     $insert_sql = "INSERT INTO product_variants (product_id, name, rate, created_by, updated_by, created_on, updated_on) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    // Prepare the statement
-    $stmt = $conn2->prepare($insert_sql);
+//     // Prepare the statement
+//     $stmt = $conn2->prepare($insert_sql);
 
-    // Bind parameters
-    // iisiiis gemini
-    // isiiiss
-    $stmt->bind_param("isiiiss", $product_id, $name, $rate, $created_by, $updated_by, $created_on, $updated_on);
+//     // Bind parameters
+//     // iisiiis gemini
+//     // isiiiss
+//     $stmt->bind_param("isiiiss", $product_id, $name, $rate, $created_by, $updated_by, $created_on, $updated_on);
 
-    // Set values for the parameters
-    $product_id = $have_varient[1]; // Replace with your desired product ID
+//     // Set values for the parameters
+//     $product_id = $have_varient[1]; // Replace with your desired product ID
 
-    if ($i == 1) {
-        $name = "Small";
-        $rate = $pro["s"];
-    } else if ($i == 2) {
-        $name = "Medium";
-        $rate = $pro["m"];
-    } else {
-        $name = "Large";
-        $rate = $pro["l"];
-    }
+//     if ($i == 1) {
+//         $name = "Small";
+//         $rate = $pro["s"];
+//     } else if ($i == 2) {
+//         $name = "Medium";
+//         $rate = $pro["m"];
+//     } else {
+//         $name = "Large";
+//         $rate = $pro["l"];
+//     }
 
-    $created_by = 0; // Replace with your desired created_by value
-    $updated_by = 0; // Replace with your desired updated_by value
-    $created_on = date("Y-m-d H:i:s");
-    $updated_on = date("Y-m-d H:i:s");
+//     $created_by = 0; // Replace with your desired created_by value
+//     $updated_by = 0; // Replace with your desired updated_by value
+//     $created_on = date("Y-m-d H:i:s");
+//     $updated_on = date("Y-m-d H:i:s");
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "New varients created <br>" . $a;
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-    $stmt->close();
+//     // Execute the statement
+//     if ($stmt->execute()) {
+//         echo "New varients created <br>" . $a;
+//     } else {
+//         echo "Error: " . $stmt->error;
+//     }
+//     $stmt->close();
 
-    // here we insert the addons on product_addons table
-    // Prepare the SQL statement  to select the last ID
+//     // here we insert the addons on product_addons table
+//     // Prepare the SQL statement  to select the last ID
 
-    $last_variant_id = last_id_variants();
-    echo "last variant id : " . $last_variant_id . "<br>";
+//     $last_variant_id = last_id_variants();
+//     echo "last variant id : " . $last_variant_id . "<br>";
 
-    if ($i == 1) {
-        insert_product_addons($last_variant_id, "topping_for_small");
-    } else if ($i == 2) {
-        insert_product_addons($last_variant_id, "topping_for_medium");
-    } else if ($i == 3) {
-        insert_product_addons($last_variant_id, "topping_for_large");
-    }   
-}
+//     if ($i == 1) {
+//         insert_product_addons($last_variant_id, "topping_for_small");
+//     } else if ($i == 2) {
+//         insert_product_addons($last_variant_id, "topping_for_medium");
+//     } else if ($i == 3) {
+//         insert_product_addons($last_variant_id, "topping_for_large");
+//     }   
+// }
 
 ?>

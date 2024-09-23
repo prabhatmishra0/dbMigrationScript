@@ -76,7 +76,7 @@ while ($pro = $result->fetch_assoc()) {
         );
 
         // Set values for the parameters
-        $outlet_id = "20210101001";
+        $outlet_id = $ot_id;
         $category_id = category_id($pro["pCatagory"]);
         $name = $pro["pName"]; // Replace with your desired name
         $thumbnail = $pro["pName"]; // Replace with your desired thumbnail URL

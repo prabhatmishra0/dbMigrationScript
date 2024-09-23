@@ -1,8 +1,8 @@
 <?php
 
-echo "we Empty all Table <br>";
+// echo "we Empty all Table <br>";
 
-include('Empty_table.php');
+// include('Empty_table.php');
 
 echo "Starting Categary creations";
 

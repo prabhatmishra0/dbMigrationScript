@@ -1,16 +1,8 @@
 <?php
-// Connect to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "mdesk";
 
+include('db.php');
 
-// target database
-$target_dbname = "mdesk_v1";
-
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername1, $username1, $password1, $dbname1);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -28,14 +20,14 @@ if ($result = $conn->query($sql)) {
     }
     // we close connection after getting data 
     $conn->close();
-    echo "Data get from mdesk database";
+    echo "Data get from mdesk database <br>";
 
-    echo "Start Sending data to mdesk_v1";
+    echo "Start Sending data to mdesk_v1 <br>";
     
     foreach ($array as $arr) {
         
         //Create connection
-        $conn = new mysqli($servername, $username, $password, $target_dbname);
+        $conn = new mysqli($servername2, $username2, $password2, $dbname2);
 
         // Check connection
         if ($conn->connect_error) {
@@ -52,7 +44,7 @@ if ($result = $conn->query($sql)) {
         $stmt->bind_param("issiiss", $outlet_id, $name, $status, $created_by, $updated_by, $created_on, $updated_on);
 
         // Set values for the parameters
-        $outlet_id = "20210101001"; // Replace with your desired outlet ID
+        $outlet_id = $ot_id; // Replace with your desired outlet ID
         $name = $arr; // Replace with your desired name
         $status = "active"; // Replace with your desired status
         $created_by = 0; // Replace with your desired created_by value

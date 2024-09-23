@@ -1,15 +1,6 @@
 <?php
-// Database 1 connection details
-$servername1 = "localhost";
-$username1 = "root";
-$password1 = "";
-$dbname1 = "mdesk";
 
-// Database 2 connection details
-$servername2 = "localhost";
-$username2 = "root";
-$password2 = "";
-$dbname2 = "mdesk_v1";
+include('db.php');
 
 // Connect to Database 1
 $conn1 = new mysqli($servername1, $username1, $password1, $dbname1);
@@ -43,12 +34,12 @@ if ($result1->num_rows > 0) {
             // for other rate changing $rate = $row["SmallRate"] to $rate = $row["MediumRate"] ✋✋
 
             // Set values for the parameters
-            $outlet_id = "20210101001"; // Replace with your desired outlet ID
-            
-            if($i == 1) {
+            $outlet_id = $ot_id; // Replace with your desired outlet ID
+
+            if ($i == 1) {
                 $addons_key = "topping_for_small";
                 $rate = $row["SmallRate"];
-            }else if($i==2) {
+            } else if ($i == 2) {
                 $addons_key = "topping_for_medium";
                 $rate = $row["MediumRate"];
             } else {
@@ -56,7 +47,7 @@ if ($result1->num_rows > 0) {
                 $rate = $row["LargeRate"];
             }
             $name = $row["ToppingName"];
-            $addon_group = $row["GroupName"]; 
+            $addon_group = $row["GroupName"];
             $created_by = 0; // Replace with your desired created_by value
             $updated_by = 0; // Replace with your desired updated_by value
             $created_on = date("Y-m-d H:i:s");
